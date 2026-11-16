@@ -94,7 +94,7 @@ def html_jobs(html: str, source_url: str, company: str | None = None) -> list[No
     if jobs:
         return jobs
     scripts = re.findall(
-        r"<script[^>]*type=[\"']application/json[\"'][^>]*>(.*?)</script>",
+        r"<script(?=[^>]*(?:type=[\"']application/json[\"']|id=[\"']__NEXT_DATA__[\"']))[^>]*>(.*?)</script>",
         html,
         flags=re.IGNORECASE | re.DOTALL,
     )

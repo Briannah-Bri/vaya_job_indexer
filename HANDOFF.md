@@ -2,6 +2,66 @@
 
 ## Connector Reference
 
+### Rippling (`rippling`)
+
+- Extraction: parses the public ATS JSON response.
+- URL pattern: `https://api.rippling.com/platform/api/ats/v1/board/{board_slug}/jobs`.
+- Rate limits: one request per target; honor API throttling and `429` responses.
+
+### Deel (`deel`)
+
+- Extraction: parses `__NEXT_DATA__` embedded JSON, then Schema.org JSON-LD.
+- URL pattern: `https://jobs.deel.com/{company}`.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### Gem (`gem`)
+
+- Extraction: parses the public job-board JSON response.
+- URL pattern: `https://api.gem.com/job_board/v0/{board_token}/job_posts`.
+- Rate limits: one request per target; preserve provider throttling.
+
+### Kula (`kula`)
+
+- Extraction: parses `__NEXT_DATA__` embedded JSON, then Schema.org JSON-LD.
+- URL pattern: `https://careers.kula.ai/{company}`.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### HiBob (`hibob`)
+
+- Extraction: parses the public career jobs JSON API.
+- URL pattern: `https://{company}.careers.hibob.com/api/jobs`.
+- Rate limits: one request per target; honor `429` responses.
+
+### Join.com (`join_com`)
+
+- Extraction: parses `__NEXT_DATA__` embedded JSON, then Schema.org JSON-LD.
+- URL pattern: `https://join.com/companies/{company}`.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### Zoho Recruit (`zoho_recruit`)
+
+- Extraction: parses JSON, XML, or public careers-page JSON-LD.
+- URL pattern: `/recruit/WebFormServeServlet` or `/jobs/Careers`.
+- Rate limits: one request per target; honor provider throttling.
+
+### TriNet (`trinet`)
+
+- Extraction: parses Hirebridge/TriNet Schema.org JSON-LD and embedded career-page JSON.
+- URL pattern: TriNet public career portal URLs such as `https://jobs.trinet.com/`.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### Rival (`rival`)
+
+- Extraction: parses public career-page JSON-LD and embedded JSON.
+- URL pattern: `https://careers.rival-hr.com/{company}`.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### Firststage (`firststage`)
+
+- Extraction: parses public career-page JSON-LD and embedded JSON.
+- URL pattern: `https://{company}.firststage.co/`.
+- Rate limits: one page request per target with a 20-second timeout.
+
 ### Teamtailor (`teamtailor`)
 
 - Extraction: parses career-page JSON-LD `JobPosting` records, then embedded application JSON.
