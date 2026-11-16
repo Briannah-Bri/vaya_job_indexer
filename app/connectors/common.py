@@ -105,6 +105,16 @@ def html_jobs(html: str, source_url: str, company: str | None = None) -> list[No
             continue
         if jobs:
             return jobs
+    page_data = re.search(
+        r"window\.pageData\s*=\s*(\{.*?\})\s*;",
+        html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if page_data:
+        try:
+            return json_jobs(json.loads(page_data.group(1)), source_url, company)
+        except json.JSONDecodeError as exc:
+            raise FetchError(200, f"invalid window.pageData JSON at {source_url}") from exc
     return []
 
 

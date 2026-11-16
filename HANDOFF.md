@@ -2,6 +2,66 @@
 
 ## Connector Reference
 
+### ApplicantPro (`applicantpro`)
+
+- Extraction: parses public career-page JSON-LD and embedded JSON.
+- URL pattern: `https://{company}.applicantpro.com/jobs/`.
+- Rate limits: one page request per target; honor `429` responses.
+
+### CareerPlug (`careerplug`)
+
+- Extraction: parses public career-page JSON-LD and embedded JSON.
+- URL pattern: `https://{company}.careerplug.com/jobs`.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### Hirebridge (`hirebridge`)
+
+- Extraction: parses JSON-LD/HTML first, then XML job-list nodes.
+- URL pattern: `https://recruit.hirebridge.com/v3/careerportal/onlineapply/...`.
+- Rate limits: one request per target; honor provider throttling.
+
+### Hireology (`hireology`)
+
+- Extraction: parses public JSON, then HTML/JSON-LD career data.
+- URL pattern: `https://careers.hireology.com/{company}`.
+- Rate limits: one request per target; back off on `429`.
+
+### HiringThing (`hiringthing`)
+
+- Extraction: parses JSON-LD/embedded JSON first, then XML job nodes.
+- URL pattern: `https://{company}.hiringthing.com/`.
+- Rate limits: one request per target with a 20-second timeout.
+
+### iSolved Hire (`isolvedhire`)
+
+- Extraction: parses public career-page JSON-LD and embedded JSON.
+- URL pattern: `https://{company}.isolvedhire.com/jobs/`.
+- Rate limits: one page request per target; honor `429`.
+
+### Paycom (`paycom`)
+
+- Extraction: parses public ATS JSON-LD and embedded JSON.
+- URL pattern: `https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey={key}`.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### Paycor (`paycor`)
+
+- Extraction: parses public JSON, then HTML/JSON-LD career data.
+- URL pattern: `https://recruitingbypaycor.com/career/CareerHome.action?clientId={id}`.
+- Rate limits: one request per target; honor provider throttling.
+
+### Paylocity (`paylocity`)
+
+- Extraction: parses embedded `window.pageData` JSON, then JSON-LD.
+- URL pattern: `https://recruiting.paylocity.com/recruiting/jobs/All/{guid}/{company}`.
+- Rate limits: one page request per target; back off on `429`.
+
+### Trakstar (`trakstar`)
+
+- Extraction: parses public career-page JSON-LD and embedded JSON.
+- URL pattern: `https://{company}.hire.trakstar.com/`.
+- Rate limits: one page request per target with a 20-second timeout.
+
 ### Rippling (`rippling`)
 
 - Extraction: parses the public ATS JSON response.

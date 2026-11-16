@@ -1,5 +1,7 @@
 from .base import BaseConnector
+from .platforms.applicantpro import ApplicantProConnector
 from .platforms.bamboohr import BambooHRConnector
+from .platforms.careerplug import CareerPlugConnector
 from .platforms.comeet import ComeetConnector
 from .platforms.deel import DeelConnector
 from .platforms.firststage import FirststageConnector
@@ -8,22 +10,40 @@ from .platforms.gem import GemConnector
 from .platforms.gohire import GoHireConnector
 from .platforms.hibob import HiBobConnector
 from .platforms.hirehive import HirehiveConnector
+from .platforms.hirebridge import HirebridgeConnector
+from .platforms.hireology import HireologyConnector
+from .platforms.hiringthing import HiringThingConnector
+from .platforms.isolvedhire import iSolvedHireConnector
 from .platforms.jazzhr import JazzHRConnector
 from .platforms.join_com import JoinComConnector
 from .platforms.jobvite import JobviteConnector
 from .platforms.kula import KulaConnector
 from .platforms.manatal import ManatalConnector
+from .platforms.paycom import PaycomConnector
+from .platforms.paycor import PaycorConnector
+from .platforms.paylocity import PaylocityConnector
 from .platforms.personio import PersonioConnector
 from .platforms.rippling import RipplingConnector
 from .platforms.rival import RivalConnector
 from .platforms.the_panther import ThePantherConnector
 from .platforms.teamtailor import TeamtailorConnector
 from .platforms.trinet import TriNetConnector
+from .platforms.trakstar import TrakstarConnector
 from .platforms.zoho_recruit import ZohoRecruitConnector
 
 
 CONNECTORS: dict[str, type[BaseConnector]] = {
     "teamtailor": TeamtailorConnector,
+    "applicantpro": ApplicantProConnector,
+    "careerplug": CareerPlugConnector,
+    "hirebridge": HirebridgeConnector,
+    "hireology": HireologyConnector,
+    "hiringthing": HiringThingConnector,
+    "isolvedhire": iSolvedHireConnector,
+    "paycom": PaycomConnector,
+    "paycor": PaycorConnector,
+    "paylocity": PaylocityConnector,
+    "trakstar": TrakstarConnector,
     "rippling": RipplingConnector,
     "deel": DeelConnector,
     "gem": GemConnector,
