@@ -2,6 +2,66 @@
 
 ## Connector Reference
 
+### Niceboard (`niceboard`)
+
+- Extraction: parses Schema.org `JobPosting` JSON-LD, then job-card HTML.
+- URL pattern: Niceboard-powered board roots or job listing pages.
+- Rate limits: one page request per target; honor `429` responses.
+
+### WordPress Job Manager (`wp_job_manager`)
+
+- Extraction: fetches `/wp-json/wp/v2/job-listings`, then falls back to page JSON-LD/cards.
+- URL pattern: a WordPress site root or `/wp-json/wp/v2/job-listings`.
+- Rate limits: one API/page request per target; honor WordPress limits.
+
+### JobKit (`jobkit`)
+
+- Extraction: parses `JobPosting` JSON-LD, then HTML job cards.
+- URL pattern: JobKit board root or jobs page.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### Jobboardly (`jobboardly`)
+
+- Extraction: parses `JobPosting` JSON-LD and paginated HTML cards.
+- URL pattern: Jobboardly board root or listing page.
+- Rate limits: one page request per target; callers should schedule pagination conservatively.
+
+### Jobiqo (`jobiqo`)
+
+- Extraction: parses `JobPosting` JSON-LD and HTML search cards.
+- URL pattern: Jobiqo board root or search page.
+- Rate limits: one page request per target; honor provider throttling.
+
+### JBoard.io (`jboard_io`)
+
+- Extraction: parses JBoard.io `JobPosting` JSON-LD and HTML cards.
+- URL pattern: JBoard.io board root or jobs page.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### JobBoardFire (`jobboardfire`)
+
+- Extraction: parses `JobPosting` JSON-LD and HTML cards.
+- URL pattern: JobBoardFire board root or jobs page.
+- Rate limits: one page request per target; honor `429`.
+
+### SmartJobBoard (`smartjobboard`)
+
+- Extraction: parses `JobPosting` JSON-LD and `/jobs/` HTML cards.
+- URL pattern: SmartJobBoard `/jobs/` page.
+- Rate limits: one page request per target; use conservative scheduling.
+
+### JobBoard.io (`jobboard_io`)
+
+- Extraction: parses JobBoard.io/ZipRecruiter `JobPosting` JSON-LD and HTML cards.
+- URL pattern: JobBoard.io board root or jobs page.
+- Rate limits: one page request per target; honor provider limits.
+
+### Wiley Madgex (`wiley_madgex`)
+
+- Extraction: parses Madgex `JobPosting` JSON-LD and `/jobs/` HTML cards.
+- URL pattern: Madgex-powered board `/jobs/` page.
+- Rate limits: one page request per target with a 20-second timeout.
+
 ### Workday (`workday`)
 
 - Extraction: sends the public CXS XHR POST payload and normalizes `jobPostings`.

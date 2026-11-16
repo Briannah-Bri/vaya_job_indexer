@@ -142,7 +142,29 @@ def html_jobs(html: str, source_url: str, company: str | None = None) -> list[No
             return json_jobs(json.loads(page_data.group(1)), source_url, company)
         except json.JSONDecodeError as exc:
             raise FetchError(200, f"invalid window.pageData JSON at {source_url}") from exc
-    return []
+    return html_card_jobs(html, source_url, company)
+
+
+def html_card_jobs(html: str, source_url: str, company: str | None = None) -> list[NormalizedJob]:
+    jobs = []
+    blocks = re.findall(
+        r"<(?:article|div|li)\b[^>]*class=[\"'][^\"']*"
+        r"(?:job|listing|position|opening|vacancy)[^\"']*[\"'][^>]*>(.*?)</(?:article|div|li)>",
+        html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    for block in blocks:
+        link = re.search(r"<a\b[^>]*href=[\"']([^\"']+)[\"'][^>]*>(.*?)</a>", block,
+                         flags=re.IGNORECASE | re.DOTALL)
+        if not link:
+            continue
+        title = re.sub(r"<[^>]+>", "", link.group(2)).strip()
+        if not title:
+            continue
+        text = " ".join(re.sub(r"<[^>]+>", " ", block).split())
+        jobs.append(NormalizedJob(title, company or "Unknown", text or None, text,
+                                  urljoin(source_url, link.group(1))))
+    return jobs
 
 
 def require_jobs(jobs: list[NormalizedJob], url: str) -> list[NormalizedJob]:

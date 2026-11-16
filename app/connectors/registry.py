@@ -25,6 +25,16 @@ from .platforms.join_com import JoinComConnector
 from .platforms.jobvite import JobviteConnector
 from .platforms.kula import KulaConnector
 from .platforms.manatal import ManatalConnector
+from .platforms.niceboard import NiceboardConnector
+from .platforms.wp_job_manager import WPJobManagerConnector
+from .platforms.jobkit import JobkitConnector
+from .platforms.jobboardly import JobboardlyConnector
+from .platforms.jobiqo import JobiqoConnector
+from .platforms.jboard_io import JBoardIOConnector
+from .platforms.jobboardfire import JobBoardFireConnector
+from .platforms.smartjobboard import SmartJobBoardConnector
+from .platforms.jobboard_io import JobBoardIOConnector
+from .platforms.wiley_madgex import WileyMadgexConnector
 from .platforms.icims import ICIMSConnector
 from .platforms.oracle_recruiting import OracleRecruitingConnector
 from .platforms.paycom import PaycomConnector
@@ -52,6 +62,16 @@ from .platforms.zoho_recruit import ZohoRecruitConnector
 
 CONNECTORS: dict[str, type[BaseConnector]] = {
     "teamtailor": TeamtailorConnector,
+    "niceboard": NiceboardConnector,
+    "wp_job_manager": WPJobManagerConnector,
+    "jobkit": JobkitConnector,
+    "jobboardly": JobboardlyConnector,
+    "jobiqo": JobiqoConnector,
+    "jboard_io": JBoardIOConnector,
+    "jobboardfire": JobBoardFireConnector,
+    "smartjobboard": SmartJobBoardConnector,
+    "jobboard_io": JobBoardIOConnector,
+    "wiley_madgex": WileyMadgexConnector,
     "workday": WorkdayConnector,
     "icims": ICIMSConnector,
     "adp": ADPConnector,
