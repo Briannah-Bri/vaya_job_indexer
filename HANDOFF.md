@@ -2,6 +2,54 @@
 
 ## Connector Reference
 
+### Recooty (`recooty`)
+
+- Extraction: parses public career-page JSON-LD and embedded JSON.
+- URL pattern: `https://{company}.recooty.com/`.
+- Rate limits: one page request per target; honor `429` responses.
+
+### WeRecruit (`werecruit`)
+
+- Extraction: parses public career-page JSON-LD and embedded JSON.
+- URL pattern: `https://{company}.werecruit.io/`.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### TalentReef (`talentreef`)
+
+- Extraction: parses public JSON first, then HTML/JSON-LD portal data.
+- URL pattern: `https://secure.talentreef.com/{company}`.
+- Rate limits: one request per target; honor provider throttling.
+
+### PageUp (`pageup`)
+
+- Extraction: parses listing-page JSON-LD and embedded JSON.
+- URL pattern: `https://careers.pageuppeople.com/{instance}/cw/en/listing`.
+- Rate limits: one page request per target; back off on `429`.
+
+### Avature (`avature`)
+
+- Extraction: parses search-page JSON-LD and embedded JSON.
+- URL pattern: `https://{company}.avature.net/careers/SearchJobs`.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### BrassRing (`brassring`)
+
+- Extraction: parses search HTML and embedded XHR JSON/JSON-LD data.
+- URL pattern: `https://sjobs.brassring.com/TGnewUI/Search/Home/Home?partnerid={pid}&siteid={sid}`.
+- Rate limits: one request per target; honor provider throttling.
+
+### Cornerstone OnDemand (`csod`)
+
+- Extraction: parses public career-site JSON-LD and embedded JSON.
+- URL pattern: `https://{company}.csod.com/ux/ats/careersite/{id}/home`.
+- Rate limits: one page request per target; honor `429`.
+
+### Paradox Olivia (`paradox`)
+
+- Extraction: parses public JSON/GraphQL-shaped responses, then career-page JSON-LD and embedded JSON.
+- URL pattern: `https://careers.{company}.com` or an Olivia public job-search endpoint.
+- Rate limits: one request per target with a 20-second timeout; use provider backoff.
+
 ### ApplicantPro (`applicantpro`)
 
 - Extraction: parses public career-page JSON-LD and embedded JSON.
