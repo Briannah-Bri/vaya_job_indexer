@@ -27,6 +27,29 @@ def fetch(url: str, accept: str = "*/*") -> bytes:
         raise FetchError(None, f"request failed for {url}: {exc}") from exc
 
 
+def fetch_json_post(url: str, payload: Any) -> Any:
+    body = json.dumps(payload).encode("utf-8")
+    request = Request(
+        url,
+        data=body,
+        method="POST",
+        headers={
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "User-Agent": USER_AGENT,
+        },
+    )
+    try:
+        with urlopen(request, timeout=20) as response:
+            if response.status != 200:
+                raise FetchError(response.status, f"unexpected response for {url}")
+            return json_payload(response.read(), url)
+    except HTTPError as exc:
+        raise FetchError(exc.code, f"request failed for {url}") from exc
+    except (URLError, TimeoutError, OSError) as exc:
+        raise FetchError(None, f"request failed for {url}: {exc}") from exc
+
+
 def json_payload(body: bytes, url: str) -> Any:
     try:
         return json.loads(body.decode("utf-8"))
@@ -56,7 +79,8 @@ def json_jobs(payload: Any, source_url: str, company: str | None = None) -> list
                 visit(item)
         elif isinstance(value, dict):
             if any(key in value for key in (
-                "title", "name", "jobTitle", "position_name", "jobOpeningName"
+                "title", "name", "jobTitle", "position_name", "jobOpeningName",
+                "requisitionTitle", "positionTitle"
             )):
                 records.append(value)
             for key, child in value.items():
@@ -70,7 +94,10 @@ def json_jobs(payload: Any, source_url: str, company: str | None = None) -> list
     jobs = []
     seen: set[str] = set()
     for record in records:
-        title = _first(record, "title", "jobTitle", "position_name", "jobOpeningName", "name")
+        title = _first(
+            record, "title", "jobTitle", "position_name", "jobOpeningName",
+            "requisitionTitle", "positionTitle", "name",
+        )
         if not title or title in seen:
             continue
         seen.add(title)

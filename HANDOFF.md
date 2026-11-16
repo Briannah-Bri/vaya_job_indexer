@@ -2,6 +2,66 @@
 
 ## Connector Reference
 
+### Workday (`workday`)
+
+- Extraction: sends the public CXS XHR POST payload and normalizes `jobPostings`.
+- URL pattern: `https://{tenant}.{wd_instance}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs`.
+- Rate limits: one POST per target with a 20-second timeout; honor `429` and provider backoff.
+
+### iCIMS (`icims`)
+
+- Extraction: parses iframe career-page JSON-LD and embedded JSON.
+- URL pattern: `https://careers-{company}.icims.com/jobs/search?ss=1&in_iframe=1`.
+- Rate limits: one page request per target; honor provider throttling.
+
+### ADP (`adp`)
+
+- Extraction: parses the public Workforce Now requisitions JSON response.
+- URL pattern: `/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid={cid}`.
+- Rate limits: one request per target; honor `429` responses.
+
+### Dayforce (`dayforce`)
+
+- Extraction: parses the public job-board search JSON response.
+- URL pattern: `https://jobs.dayforcehcm.com/api/{company}/{locale}/jobboard/search`.
+- Rate limits: one request per target with a 20-second timeout.
+
+### Eightfold AI (`eightfold_ai`)
+
+- Extraction: parses the public apply/jobs JSON response.
+- URL pattern: `https://{company}.eightfold.ai/api/apply/v2/jobs?domain={company}.com`.
+- Rate limits: one request per target; honor provider throttling.
+
+### Oracle Recruiting (`oracle_recruiting`)
+
+- Extraction: parses the public Recruiting Cloud requisitions JSON response.
+- URL pattern: `/hcmRestApi/resources/latest/recruitingCEJobRequisitions?finder=findReqs;siteNumber={site}`.
+- Rate limits: one request per target; honor API limits.
+
+### Phenom People (`phenom_people`)
+
+- Extraction: parses `phApp.ddo`/embedded page JSON and JSON-LD career data.
+- URL pattern: a Phenom public career page or its job-search XHR endpoint.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### SAP SuccessFactors (`sap_successfactors`)
+
+- Extraction: parses HTML/JSON-LD first, then XML job nodes.
+- URL pattern: `https://career{dc}.successfactors.com/career?company={company}`.
+- Rate limits: one request per target; honor provider throttling.
+
+### Taleo (`taleo`)
+
+- Extraction: parses CareerSection HTML/JSON-LD and embedded XHR-shaped data.
+- URL pattern: `https://{company}.taleo.net/careersection/{section}/jobsearch.ftl`.
+- Rate limits: one page request per target; back off on `429`.
+
+### UltiPro (`ultipro`)
+
+- Extraction: parses UKG Pro/UltiPro public recruiting JSON.
+- URL pattern: `/JobBoard/{board_id}/OpportunityDetail` or the public search POST endpoint.
+- Rate limits: one request per target with a 20-second timeout.
+
 ### Recooty (`recooty`)
 
 - Extraction: parses public career-page JSON-LD and embedded JSON.
