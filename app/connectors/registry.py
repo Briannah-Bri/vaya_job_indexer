@@ -34,6 +34,16 @@ from .platforms.jboard_io import JBoardIOConnector
 from .platforms.jobboardfire import JobBoardFireConnector
 from .platforms.smartjobboard import SmartJobBoardConnector
 from .platforms.jobboard_io import JobBoardIOConnector
+from .platforms.talenetic import TaleneticConnector
+from .platforms.jobmount import JobMountConnector
+from .platforms.careersitecloud import CareerSiteCloudConnector
+from .platforms.jobboard_com import JobBoardComConnector
+from .platforms.artha import ArthaConnector
+from .platforms.jobboardsoftware_com import JobBoardSoftwareComConnector
+from .platforms.jobboardhq import JobBoardHQConnector
+from .platforms.nodex import NodexConnector
+from .platforms.ejobboard import EJobBoardConnector
+from .platforms.ejobsitesoftware_com import EJobSiteSoftwareComConnector
 from .platforms.wiley_madgex import WileyMadgexConnector
 from .platforms.icims import ICIMSConnector
 from .platforms.oracle_recruiting import OracleRecruitingConnector
@@ -62,6 +72,16 @@ from .platforms.zoho_recruit import ZohoRecruitConnector
 
 CONNECTORS: dict[str, type[BaseConnector]] = {
     "teamtailor": TeamtailorConnector,
+    "talenetic": TaleneticConnector,
+    "jobmount": JobMountConnector,
+    "careersitecloud": CareerSiteCloudConnector,
+    "jobboard_com": JobBoardComConnector,
+    "artha": ArthaConnector,
+    "jobboardsoftware_com": JobBoardSoftwareComConnector,
+    "jobboardhq": JobBoardHQConnector,
+    "nodex": NodexConnector,
+    "ejobboard": EJobBoardConnector,
+    "ejobsitesoftware_com": EJobSiteSoftwareComConnector,
     "niceboard": NiceboardConnector,
     "wp_job_manager": WPJobManagerConnector,
     "jobkit": JobkitConnector,

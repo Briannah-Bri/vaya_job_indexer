@@ -2,6 +2,66 @@
 
 ## Connector Reference
 
+### Talenetic (`talenetic`)
+
+- Extraction: parses Talenetic `JobPosting` JSON-LD and HTML cards.
+- URL pattern: Talenetic career or job-board pages.
+- Rate limits: one page request per target; honor `429` responses.
+
+### JobMount (`jobmount`)
+
+- Extraction: parses JSON-LD/HTML cards, then XML job nodes.
+- URL pattern: JobMount search or job-board pages.
+- Rate limits: one request per target; honor provider throttling.
+
+### CareerSiteCloud (`careersitecloud`)
+
+- Extraction: parses CareerSiteCloud JSON-LD and HTML cards.
+- URL pattern: CareerSiteCloud career or job-board pages.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### JobBoard.com (`jobboard_com`)
+
+- Extraction: parses JobBoard.com JSON-LD and HTML cards.
+- URL pattern: JobBoard.com board root or jobs page.
+- Rate limits: one page request per target; back off on `429`.
+
+### Artha (`artha`)
+
+- Extraction: parses Artha JSON-LD and HTML cards.
+- URL pattern: Artha-powered board root or jobs page.
+- Rate limits: one page request per target; honor provider limits.
+
+### JobBoardSoftware.com (`jobboardsoftware_com`)
+
+- Extraction: parses JSON-LD and HTML cards.
+- URL pattern: JobBoardSoftware.com board root or jobs page.
+- Rate limits: one page request per target with a 20-second timeout.
+
+### JobBoardHQ (`jobboardhq`)
+
+- Extraction: parses JobBoardHQ JSON-LD and HTML cards.
+- URL pattern: JobBoardHQ board root or jobs page.
+- Rate limits: one page request per target; honor `429`.
+
+### Nodex (`nodex`)
+
+- Extraction: parses Nodex JSON-LD and HTML cards.
+- URL pattern: Nodex board root or jobs page.
+- Rate limits: one page request per target; use conservative scheduling.
+
+### eJobBoard (`ejobboard`)
+
+- Extraction: parses eJobBoard JSON-LD and HTML cards.
+- URL pattern: eJobBoard board root or jobs page.
+- Rate limits: one page request per target; honor provider limits.
+
+### eJobSiteSoftware.com (`ejobsitesoftware_com`)
+
+- Extraction: parses eJobSiteSoftware.com JSON-LD and HTML cards.
+- URL pattern: eJobSiteSoftware.com board root or jobs page.
+- Rate limits: one page request per target with a 20-second timeout.
+
 ### Niceboard (`niceboard`)
 
 - Extraction: parses Schema.org `JobPosting` JSON-LD, then job-card HTML.
